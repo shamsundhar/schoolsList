@@ -57,13 +57,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$testExtJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
-    // For instrumentation tests
-    androidTestImplementation  "com.google.dagger:hilt-android-testing:$hiltVersion"
-    kaptAndroidTest "com.google.dagger:hilt-compiler:$hiltVersion"
-
-    // For local unit tests
-    testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
-    kaptTest "com.google.dagger:hilt-compiler:$hiltVersion"
 }
 kapt {
     correctErrorTypes true

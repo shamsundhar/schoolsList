@@ -2,7 +2,7 @@ package com.shyam.schoolslist.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shyam.schoolslist.domain.model.SchoolEntity
+import com.shyam.schoolslist.domain.model.Record
 import com.shyam.schoolslist.domain.repository.SchoolsRepository
 import com.shyam.schoolslist.ui.base.UiState
 import com.shyam.schoolslist.utils.AppConstant
@@ -18,9 +18,9 @@ class SchoolsListViewModel @Inject constructor(
     private val schoolsRepository: SchoolsRepository
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState<List<SchoolEntity>>>(UiState.Loading)
+    private val _uiState = MutableStateFlow<UiState<List<Record>>>(UiState.Loading)
 
-    val uiState: StateFlow<UiState<List<SchoolEntity>>> = _uiState
+    val uiState: StateFlow<UiState<List<Record>>> = _uiState
 
     init {
         fetchSchools()

@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shyam.schoolslist.databinding.FragmentSchoolsListBinding
-import com.shyam.schoolslist.domain.model.SchoolEntity
+import com.shyam.schoolslist.domain.model.Record
 import com.shyam.schoolslist.ui.base.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 class SchoolsListFragment : Fragment() {
 
     private val viewModel: SchoolsListViewModel by viewModels()
+    private lateinit var adapter: SchoolListAdapter
 
     private lateinit var binding: FragmentSchoolsListBinding
     companion object {
@@ -58,13 +59,16 @@ class SchoolsListFragment : Fragment() {
         }
     }
 
-    private fun renderList(schoolList: List<SchoolEntity>) {
-//        adapter.addData(schoolList)
-//        adapter.notifyDataSetChanged()
+    private fun renderList(schoolList: List<Record>) {
         Log.i("", "Schools response::$schoolList.size")
+        adapter.addData(schoolList)
     }
 
     private fun setupUI() {
+        binding.schoolListRecyclerView.layoutManager = LinearLayoutManager(context)
+        adapter = SchoolListAdapter()
+        // Setting the Adapter with the recyclerview
+        binding.schoolListRecyclerView.adapter = adapter
     }
 
     override fun onCreateView(
@@ -76,22 +80,6 @@ class SchoolsListFragment : Fragment() {
 
         setupUI()
         setupObserver()
-
-        binding.schoolListRecyclerView.layoutManager = LinearLayoutManager(context)
-        // ArrayList of class ItemsViewModel
-        val data = ArrayList<SchoolModel>()
-
-        // This loop will create 20 Views containing
-        // the image with the count of view
-        for (i in 1..20) {
-            data.add(SchoolModel("ID$i", "Name $i", "Mobile$i", "Email$i"))
-        }
-
-        // This will pass the ArrayList to our Adapter
-        val adapter = SchoolListAdapter(data)
-
-        // Setting the Adapter with the recyclerview
-        binding.schoolListRecyclerView.adapter = adapter
 
         return binding.root
     }

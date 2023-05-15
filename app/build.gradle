@@ -46,6 +46,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$gsonVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion"
 
     // hilt
     implementation "com.google.dagger:hilt-android:2.46"

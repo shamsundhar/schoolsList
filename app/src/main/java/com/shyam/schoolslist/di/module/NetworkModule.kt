@@ -1,27 +1,21 @@
 package com.shyam.schoolslist.di.module
 
-import android.content.Context
-import com.shyam.schoolslist.MyApplication
-import com.shyam.schoolslist.di.ApplicationContext
 import com.shyam.schoolslist.di.BaseUrl
 import com.shyam.schoolslist.domain.api.GetSchoolsApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ApplicationModule(private val application: MyApplication) {
-
-    @ApplicationContext
-    @Provides
-    fun provideContext(): Context {
-        return application
-    }
+object NetworkModule {
 
     @BaseUrl
     @Provides
@@ -33,18 +27,25 @@ class ApplicationModule(private val application: MyApplication) {
     @Singleton
     fun provideGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
 
-//    @Provides
-//    @Singleton
-//    fun provideGetSchoolsApiService(
-//        @BaseUrl baseUrl: String,
-//
-//    ): GetSchoolsApiService {
-//        return Retrofit.Builder()
-//            .baseUrl(baseUrl)
-//            .addConverterFactory(gsonConverterFactory)
-//            .build()
-//            .create(GetSchoolsApiService::class.java)
-//    }
+    @Provides
+    fun providesLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    @Provides
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
+
+
+        val okHttpClient = OkHttpClient().newBuilder()
+        okHttpClient.callTimeout(40, TimeUnit.SECONDS)
+        okHttpClient.connectTimeout(40, TimeUnit.SECONDS)
+        okHttpClient.readTimeout(40, TimeUnit.SECONDS)
+        okHttpClient.writeTimeout(40, TimeUnit.SECONDS)
+        okHttpClient.addInterceptor(loggingInterceptor)
+        okHttpClient.build()
+        return okHttpClient.build()
+    }
 
     @Provides
     fun provideRetrofitClient(@BaseUrl baseUrl: String, gsonConverterFactory: GsonConverterFactory): Retrofit {

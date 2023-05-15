@@ -1,4 +1,4 @@
-# Schools List App
+# Schools List App. https://github.com/shamsundhar/schoolsList/actions/workflows/android.yml/badge.svg
 This app will display list of school details.
 ### App built on following:
 

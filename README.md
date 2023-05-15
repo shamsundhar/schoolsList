@@ -1,6 +1,7 @@
 # Schools List App. [![Android CI](https://github.com/shamsundhar/schoolsList/actions/workflows/android.yml/badge.svg)](https://github.com/shamsundhar/schoolsList/actions/workflows/android.yml)   [![Unit Tests](https://github.com/shamsundhar/schoolsList/actions/workflows/unittests.yml/badge.svg)](https://github.com/shamsundhar/schoolsList/actions/workflows/unittests.yml)
 
-This app will display list of school details.
+This app will display list of school details. 
+### *Unit Tests Not Available.
 ### App built on following:
 
 - MVVM Architecture

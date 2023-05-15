@@ -13,8 +13,7 @@ buildscript {
         lifecycleVersion = '2.6.1'
 
         // hilt
-        hiltExtensionVersion = '1.0.0-beta01'
-        hiltVersion = '2.38.1'
+        hiltVersion = '2.46'
         kotlinVersion = '1.6.0'
         coroutinesVersion = "1.5.0"
 

@@ -49,21 +49,21 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion"
 
     // hilt
-    implementation "com.google.dagger:hilt-android:2.46"
-    kapt "com.google.dagger:hilt-compiler:2.46"
-    annotationProcessor 'com.google.dagger:hilt-compiler:2.46'
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+    annotationProcessor "com.google.dagger:hilt-compiler:$hiltVersion"
 
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$testExtJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
     // For instrumentation tests
-    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.46'
-    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.46'
+    androidTestImplementation  "com.google.dagger:hilt-android-testing:$hiltVersion"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hiltVersion"
 
     // For local unit tests
-    testImplementation 'com.google.dagger:hilt-android-testing:2.46'
-    kaptTest 'com.google.dagger:hilt-compiler:2.46'
+    testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
+    kaptTest "com.google.dagger:hilt-compiler:$hiltVersion"
 }
 kapt {
     correctErrorTypes true

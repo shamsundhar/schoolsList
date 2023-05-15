@@ -1,4 +1,5 @@
 # Schools List App. https://github.com/shamsundhar/schoolsList/actions/workflows/android.yml/badge.svg
+[![Android CI](https://github.com/shamsundhar/schoolsList/actions/workflows/android.yml/badge.svg)](https://github.com/shamsundhar/schoolsList/actions/workflows/android.yml)
 This app will display list of school details.
 ### App built on following:
 

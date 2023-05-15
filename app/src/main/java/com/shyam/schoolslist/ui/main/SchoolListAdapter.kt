@@ -27,6 +27,9 @@ private lateinit var schoolList: List<Record>
         holder.schoolName.text = itemModel.Org_Name
         holder.schoolPhone.text = itemModel.Telephone
         holder.schoolEmail.text = itemModel.Email
+        if(itemModel.Telephone.isEmpty())holder.schoolPhone.visibility = View.GONE
+        if(itemModel.Email.isEmpty())holder.schoolEmail.visibility = View.GONE
+
     }
 
     override fun getItemCount(): Int {

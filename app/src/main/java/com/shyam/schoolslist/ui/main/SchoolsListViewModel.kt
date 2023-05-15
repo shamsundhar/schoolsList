@@ -26,7 +26,7 @@ class SchoolsListViewModel @Inject constructor(
         fetchSchools()
     }
 
-    private fun fetchSchools() {
+    fun fetchSchools() {
         viewModelScope.launch {
             schoolsRepository.getSchools(AppConstant.RESOURCE, AppConstant.LIMIT)
                 .catch { e ->

@@ -54,6 +54,7 @@ dependencies {
     annotationProcessor "com.google.dagger:hilt-compiler:$hiltVersion"
 
     testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
     androidTestImplementation "androidx.test.ext:junit:$testExtJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 

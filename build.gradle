@@ -24,6 +24,7 @@ buildscript {
         junitVersion = '4.13.2'
         testExtJunit = '1.1.5'
         espressoVersion = '3.5.1'
+        mockitoKotlinVersion = '4.1.0'
 
     }
 }

@@ -19,9 +19,12 @@ internal class SchoolsListViewModelTest {
 
     @Test
     fun `when schools list is not zero - then success state observed`() = runBlocking{
-//       whenever(repository.getSchools(AppConstant.RESOURCE, AppConstant.LIMIT)).thenReturn()
+        // Given
+       whenever(repository.getSchools(AppConstant.RESOURCE, AppConstant.LIMIT)).thenReturn()
+        // When
         viewModel
-//        verify()
+        // Then
+        verify()
     }
 }
 

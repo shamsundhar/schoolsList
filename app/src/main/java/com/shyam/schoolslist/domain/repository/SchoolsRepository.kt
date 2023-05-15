@@ -1,6 +1,5 @@
 package com.shyam.schoolslist.domain.repository
 
-
 import com.shyam.schoolslist.domain.api.GetSchoolsApiService
 import com.shyam.schoolslist.domain.model.Record
 import kotlinx.coroutines.flow.Flow

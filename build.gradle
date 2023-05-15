@@ -14,8 +14,6 @@ buildscript {
 
         // hilt
         hiltVersion = '2.46'
-        kotlinVersion = '1.6.0'
-        coroutinesVersion = "1.5.0"
 
         // network
         retrofitVersion = '2.9.0'

@@ -1,5 +1,6 @@
 # Schools List App
-### Major Highlights
+This app will display list of school details.
+### App built on following:
 
 - MVVM Architecture
 - Kotlin
@@ -8,7 +9,7 @@
 - Coroutines
 - Flow
 
-### This app has following packages:
+### Package Structure
 
 - **domain**: It contains all the data accessing and manipulating components.
 - **di**: It contains all the dependency injection related classes and interfaces.

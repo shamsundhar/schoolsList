@@ -5,6 +5,15 @@ on:
     branches: [ "Develop" ]
   pull_request:
     branches: [ "Develop" ]
+    
+  workflow_dispatch:
+    inputs:
+      app_id:
+        description: 'The application Id of the current build'
+        required: true
+      branch:
+        description: 'The branch from which we have to build'
+        required: true
 
 jobs:
   build:
@@ -19,8 +28,27 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
+        
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      
+    - name: Generate app bundle
+      run: ./gradlew app:bundleRelease --stacktrace
+      
     - name: Build with Gradle
       run: ./gradlew build
+      
+#   STEP 2 : Upload the Artifact
+  upload:
+    needs: [ build ]
+    name: Upload the signed artifact
+    runs-on: self-hosted
+    steps:
+      - name: Upload Bundle
+        uses: actions/upload-artifact@v2
+        with:
+          name: signed_app_bundle
+          path: app/build/outputs/bundle/release/app-release.aab

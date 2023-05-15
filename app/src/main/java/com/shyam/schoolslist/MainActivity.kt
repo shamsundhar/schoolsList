@@ -1,15 +1,19 @@
-package com.shyam.schoolslist.ui.main
+package com.shyam.schoolslist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.shyam.schoolslist.R
+import com.shyam.schoolslist.ui.main.SchoolsListFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         if(savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().replace(R.id.container, SchoolsListFragment.newInstance())
+            supportFragmentManager.beginTransaction().replace(R.id.container,
+                SchoolsListFragment.newInstance()
+            )
                 .commitNow()
         }
     }

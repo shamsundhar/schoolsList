@@ -2,11 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="shyam test"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/schoolListRecyclerView"
+       android:layout_margin="@dimen/medium_margin"
+       app:layout_constraintTop_toTopOf="parent"
+       tools:listitem="@layout/item_school_list"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

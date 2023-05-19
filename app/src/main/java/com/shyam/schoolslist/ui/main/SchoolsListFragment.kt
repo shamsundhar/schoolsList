@@ -31,7 +31,6 @@ class SchoolsListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     private fun setupObserver() {

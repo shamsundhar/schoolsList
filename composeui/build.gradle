@@ -50,17 +50,17 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.0'
     implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 
-    implementation 'androidx.activity:activity-compose:1.7.1'
+    implementation 'androidx.activity:activity-compose:1.9.0'
     implementation "androidx.compose.ui:ui:$compose_ui_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
-    implementation 'androidx.compose.material:material:1.4.3'
+    implementation 'androidx.compose.material:material:1.6.7'
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$gsonVersion"
@@ -71,7 +71,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
     annotationProcessor "com.google.dagger:hilt-compiler:$hiltVersion"
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    implementation 'androidx.hilt:hilt-navigation-compose:1.2.0'
 
 
     testImplementation 'junit:junit:4.13.2'

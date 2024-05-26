@@ -7,13 +7,13 @@ import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.Mockito.`when`
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
-import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class SchoolsListViewModelTest {
@@ -25,21 +25,29 @@ class SchoolsListViewModelTest {
     private val repository = mock<SchoolsRepository>()
     private val viewModel = SchoolsListViewModel(repository)
 
-    @Before
-    fun setup() {
-
-    }
-
     @Test
-    fun `uiInitialised - schools list is not zero - then success state observed`() = runTest {
+    fun `uiInitialised - fetch schools successful with schools list`() = runTest {
         // Given
-        whenever(repository.getSchools(any(), any())).thenReturn(getSchoolsAsFlow())
+        `when`(repository.getSchools(any(), any())).thenReturn(getSchoolsAsFlow())
         // When
         viewModel.uiInitialised()
+        advanceUntilIdle()
         // Then
         val state = viewModel.uiState.value as UiState.Success
         assertEquals(state.data[0].Telephone, "12335453")
         assertEquals(state.data[0].Email, "test@test.com")
+    }
+
+    @Test
+    fun `uiInitialised - fetch schools unsuccessful with exception`() = runTest {
+        // Given
+        `when`(repository.getSchools(any(), any())).thenAnswer { throw Exception("exception") }
+        // When
+        viewModel.uiInitialised()
+        advanceUntilIdle()
+        // Then java.lang.Exception: exception
+        val state = viewModel.uiState.value as UiState.Error
+        assertEquals("java.lang.Exception: exception", state.message)
     }
 
     private fun getSchoolsAsFlow(): Flow<List<Record>> = flow {

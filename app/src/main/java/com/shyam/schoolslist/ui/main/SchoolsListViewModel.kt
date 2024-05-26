@@ -22,11 +22,7 @@ class SchoolsListViewModel @Inject constructor(
 
     val uiState: StateFlow<UiState<List<Record>>> = _uiState
 
-    init {
-        fetchSchools()
-    }
-
-    fun fetchSchools() {
+    private fun fetchSchools() {
         viewModelScope.launch {
             schoolsRepository.getSchools(AppConstant.RESOURCE, AppConstant.LIMIT)
                 .catch { e ->
@@ -36,5 +32,9 @@ class SchoolsListViewModel @Inject constructor(
                     _uiState.value = UiState.Success(it)
                 }
         }
+    }
+
+    fun uiInitialised() {
+        fetchSchools()
     }
 }

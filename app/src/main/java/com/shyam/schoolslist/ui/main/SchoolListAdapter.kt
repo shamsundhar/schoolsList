@@ -9,7 +9,7 @@ import com.shyam.schoolslist.R
 import com.shyam.schoolslist.domain.model.Record
 
 class SchoolListAdapter() : RecyclerView.Adapter<SchoolListAdapter.ViewHolder>() {
-private lateinit var schoolList: List<Record>
+    private lateinit var schoolList: List<Record>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_school_list, parent, false)
@@ -22,21 +22,21 @@ private lateinit var schoolList: List<Record>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       val itemModel = schoolList[position]
+        val itemModel = schoolList[position]
         holder.schoolNumber.text = itemModel.School_Id.toString()
         holder.schoolName.text = itemModel.Org_Name
         holder.schoolPhone.text = itemModel.Telephone
         holder.schoolEmail.text = itemModel.Email
-        if(itemModel.Telephone.isEmpty())holder.schoolPhone.visibility = View.GONE
-        if(itemModel.Email.isEmpty())holder.schoolEmail.visibility = View.GONE
+        if (itemModel.Telephone?.isEmpty() == true) holder.schoolPhone.visibility = View.GONE
+        if (itemModel.Email?.isEmpty() == true) holder.schoolEmail.visibility = View.GONE
 
     }
 
     override fun getItemCount(): Int {
-       return schoolList.size
+        return schoolList.size
     }
 
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val schoolNumber: TextView = itemView.findViewById(R.id.itemNumber)
         val schoolName: TextView = itemView.findViewById(R.id.itemName)
         val schoolPhone: TextView = itemView.findViewById(R.id.itemPhoneNumber)
